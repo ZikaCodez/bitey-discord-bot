@@ -6,19 +6,19 @@ def generate_id():
 
 def send_log(type, message):
     colors = {
-        "INFO": "\033[94m",
-        "WARNING": "\033[93m",
-        "ERROR": "\033[91m",
         "SUCCESS": "\033[92m",
-        "RESTART": "\033[0m",
+        "PROCESS": "\033[94m",
+        "ERROR": "\033[91m",
+        "WARNING": "\033[93m",
+        "RESET": "\033[0m",
     }
     
     background_colors = {
-        "INFO": "\033[44m",
-        "WARNING": "\033[43m",
-        "ERROR": "\033[41m",
         "SUCCESS": "\033[42m",
-        "RESTART": "\033[0m",
+        "PROCESS": "\033[44m",
+        "ERROR": "\033[41m",
+        "WARNING": "\033[43m",
+        "RESET": "\033[0m",
     }
 
     bg_color = background_colors.get(type.upper(), background_colors["RESTART"])
