@@ -30,16 +30,16 @@ class User:
             "restaurant": {
                 "name": restaurant_name,
                 "menu": [],
-                "kitchenLevel": 1,
+                "kitchenLevel": 1, # The higher the kitchen level, the faster the cooking process
                 "kitchenXP": 0
             },
             "inventory": {
                 "ingredients": [],
                 "storageLimit": 50,
-                "boosters": 0
+                "boosters": [] # Array of IDs of collected boosters
             },
             "toothy": {
-                "mood": 0,
+                "mood": 0, # 0 = neutral, 1 = happy, 2 = hungry
                 "lastFed": None,
                 "notifications": [
                     {
