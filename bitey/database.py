@@ -7,5 +7,12 @@ load_dotenv()
 
 # Connect to MongoDB
 client = MongoClient(os.getenv("MONGODB_URI"))
+
+# Database
 MAIN_DB = client.MainDB
-USERS = MAIN_DB.Users
+
+# Collections
+USERS = MAIN_DB.users               # users collection
+ITEMS = MAIN_DB.items               # items collection (menu items)
+INGREDIENTS = MAIN_DB.ingredients   # cooking ingredients
+CHALLENGES = MAIN_DB.challenges     # daily challenges
