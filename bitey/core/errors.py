@@ -12,3 +12,9 @@ class UserAlreadyExists(Error): # Attempt of creating a USER that already exists
 
 class UserNotFound(Error): # No data was found for USER
     pass
+
+class RestaurantNameTaken(Error):
+    def __init__(self, name):
+        self.name = name
+    
+    pass
