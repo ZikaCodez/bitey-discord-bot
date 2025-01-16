@@ -10,6 +10,7 @@ def send_log(type, message):
         "PROCESS": "\033[94m",
         "ERROR": "\033[91m",
         "WARNING": "\033[93m",
+        "BLACK": "\033[30m",
         "RESET": "\033[0m",
     }
     
@@ -18,11 +19,12 @@ def send_log(type, message):
         "PROCESS": "\033[44m",
         "ERROR": "\033[41m",
         "WARNING": "\033[43m",
+        "BLACK": "\033[40m",
         "RESET": "\033[0m",
     }
 
     bg_color = background_colors.get(type.upper(), background_colors["RESET"])
     
     color = colors.get(type.upper(), colors["RESET"])
-    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"{color}[{timestamp}] {bg_color}{type.upper()}{colors['RESET']}: {message}{colors['RESET']}")
+    timestamp = datetime.datetime.now().strftime("%I:%M %p")
+    print(f"{color}[{timestamp}]{colors['RESET']} {bg_color}{colors["BLACK"]}{type.upper()}{colors['RESET']}{color}: {message}{colors['RESET']}")
