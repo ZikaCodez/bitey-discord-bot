@@ -25,11 +25,11 @@ async def on_ready():
     # Sync slash commands globally
     send_log("PROCESS", "Syncing commands...")
     
-    for filename in os.listdir("./commands"):
+    for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             # Load the command file as a Cog
-            await bot.load_extension(f"commands.{filename[:-3]}")
-            print(f"Loaded command: {filename[:-3]}")
+            await bot.load_extension(f"cogs.{filename[:-3]}")
+            print(f"Loaded cog: {filename[:-3]}")
             
     try:
         synced = await bot.tree.sync()

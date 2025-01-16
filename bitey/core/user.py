@@ -1,16 +1,16 @@
-from database import USERS
-from errors import *
+from .database import USERS
+from .errors import *
 import datetime
-from utility import *
+from .utility import *
 
 class User:
     
     async def get_user(self, user_id:int): # Returns the USER data from the database IF FOUND
-        data = await USERS.find_one({"_id": str(user_id)})
+        data = USERS.find_one({"_id": str(user_id)})
         return data
     
     async def find_restaurant(self, restaurant_name):
-        data = await USERS.find_one({"restaurant.name": restaurant_name})
+        data = USERS.find_one({"restaurant.name": restaurant_name})
         return data
     
     async def check_user_exist(self, user_id): # Raises an error IF user NOT FOUND, otherwise, returns the USER
@@ -21,7 +21,7 @@ class User:
             return user
     
     async def create_user(self, user_id, restaurant_name): # Creates a new USER in the database
-        send_log("PROCESS", f"Creating a new user with ID {user_id} and restaurant name {restaurant_name}")
+        send_log("PROCESS", f"Creating a new user with ID {user_id} and restaurant name '{restaurant_name}'")
         
         user_exist = await self.get_user(user_id)
         if user_exist:
@@ -57,7 +57,7 @@ class User:
                 "notifications": [
                     {
                         "message": "<:toothy:1329004192651677759> Welcome to Bitey! I'm Toothy, your personal assistant. I'll help you manage your restaurant and keep you updated on challenges.",
-                        "receivedAt": round(datetime.now().timestamp()),
+                        "receivedAt": round(datetime.datetime.now().timestamp()),
                         "system": True,
                         "from": None,
                         "image": None
@@ -66,7 +66,8 @@ class User:
             }
         }
         
-        USERS.insert_one(data)
+        user = USERS.insert_one(data)
+        print(user)
         
         send_log("SUCCESS", f"User with ID {user_id} and restaurant name {restaurant_name} has been created")
         
