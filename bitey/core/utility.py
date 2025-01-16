@@ -21,8 +21,8 @@ def send_log(type, message):
         "RESET": "\033[0m",
     }
 
-    bg_color = background_colors.get(type.upper(), background_colors["RESTART"])
+    bg_color = background_colors.get(type.upper(), background_colors["RESET"])
     
-    color = colors.get(type.upper(), colors["RESTART"])
+    color = colors.get(type.upper(), colors["RESET"])
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"{color}[{timestamp}] {bg_color}{type.upper()}{colors['RESTART']}: {message}{colors['RESTART']}")
+    print(f"{color}[{timestamp}] {bg_color}{type.upper()}{colors['RESET']}: {message}{colors['RESET']}")
