@@ -73,5 +73,4 @@ class User:
         
     async def update_user(self, user_id, data):
         user = await self.check_user_exist()
-        user = data
-        await USERS.update_one({"_id": str(user._id)}, {"$set": {data}})
+        await USERS.update_one({"_id": str(user_id)}, {"$set": data})
